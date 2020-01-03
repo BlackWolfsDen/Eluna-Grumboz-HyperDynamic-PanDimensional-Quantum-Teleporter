@@ -12,4 +12,4 @@ from server to server with easy to expand table that the core will addapt to.
 no more script core edditing to add new menus and/or locations with gps's.
 
 
-just add the menu and location data to the table and go !!
+just add a new menu or custom location data to an exsisting Menu in the table and go !!
