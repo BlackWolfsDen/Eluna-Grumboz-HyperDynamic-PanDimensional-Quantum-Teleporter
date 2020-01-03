@@ -1,4 +1,4 @@
-# Mangos_Eluna_Grumboz-Teleporter
+# Grumboz-[Mangos][Eluna]-Teleporter
 An Eluna teleporter script for Mangos
 
 a simple self contained teleporter script.
