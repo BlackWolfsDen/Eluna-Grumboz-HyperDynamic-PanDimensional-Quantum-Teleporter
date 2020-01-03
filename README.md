@@ -18,4 +18,4 @@ Menus and location entries can also be parsed for expansion now !!!
 
 # WHAT !!???!!
 
-# !!???! 1 teleporter for Dow, TBC, AND WotLK !???!!
+# !!???! 1 teleporter for DoW, TBC, AND WotLK !???!!
