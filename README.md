@@ -13,3 +13,9 @@ no more script core edditing to add new menus and/or locations with gps's.
 
 
 just add a new menu or custom location data to an exsisting Menu in the table and go !!
+
+Menus and location entries can also be parsed for expansion now !!!
+
+# WHAT !!???!!
+
+# !!???! 1 teleporter for Dow, TBC, AND WotLK !???!!
