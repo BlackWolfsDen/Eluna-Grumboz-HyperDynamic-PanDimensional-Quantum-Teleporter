@@ -341,7 +341,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 
 	if (sender == 0) then -- Continue Menu
 
-	    -- Teleporter[key]{"Menu Title", icon, team, 
+	    -- Teleporter[key]{"Menu Title", icon, team, expansion
 	    
 		local i;
 	    local entry = 0;
@@ -400,63 +400,60 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 
 	if (sender >= 1)then-- Show teleport sub-menu
 	
-		   	local mTeam = Teleporter[sender][3];
-			local pTeam = player:GetTeam();
+			if(intid == 0)then 
+				intid = 1;
+			end
 			
-			    if(intid == 0)then 
-			    	intid = 1;
-			    end
+		local a = 0;
+		local entry = 0;
+		local tSize = #Teleporter[sender][ENTRY_KEY];
+		local pTeam = player:GetTeam();
 		
-				if((mTeam == 2) or (mTeam == pTeam) or player:IsGM())then
-				
-					local a = 0;
-					local entry = 0;
-					local tSize = #Teleporter[sender][ENTRY_KEY];
+			for a = a+intid, tSize do
+			
+				if(Teleporter[sender][ENTRY_KEY][a][10] <= CORE_EXPANSION)then
+		
+					local eTeam = Teleporter[sender][ENTRY_KEY][a][3];
+	
+						if((eTeam == 2) or (eTeam == pTeam) or player:IsGM())then
 					
-						for a = a+intid, tSize do
-						
-							if(Teleporter[sender][ENTRY_KEY][a][10] <= CORE_EXPANSION)then
-					
-								local eTeam = Teleporter[sender][ENTRY_KEY][a][3];
-				
-								if((eTeam == 2) or (eTeam == pTeam) or player:IsGM())then
+							local color;
 							
-									local color;
-									
-									
-									local name, icon, team, level, map, x, y, z, o = table.unpack(Teleporter[sender][ENTRY_KEY][a]);
-									
-									if((eTeam == 2) or (eTeam ~= pTeam))then color = HOSTILE;end
-									if(eTeam == pTeam)then color = FRIENDLY;end
-									if(eTeam == 3)then color = GAMEMASTER;end
-									
-									player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset)) -- GossipMenuAddItem(icon, name, sender, intid);
-	
-									entry = entry+1;
-									
-										if((entry == Allowed_Entries) or (a == tSize))then
-										
-												if((a - Allowed_Entries) >= 12)then
+							
+							local name, icon, team, level, map, x, y, z, o, expansion = table.unpack(Teleporter[sender][ENTRY_KEY][a]);
+							
+								if((eTeam == 2) or (eTeam ~= pTeam))then color = HOSTILE;end
+								if(eTeam == pTeam)then color = FRIENDLY;end
+								if(eTeam == 3)then color = GAMEMASTER;end
+								
+							player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset)) -- GossipMenuAddItem(icon, name, sender, intid);
+								
+							entry = entry+1;
 					
-													player:GossipMenuAddItem(3, "|cff00308FBack|r", sender, 1) -- GossipMenuAddItem(icon, name, sender, intid);
-													
-												end
+						end -- entry team check
+						
+				end -- expansion check
 	
-												if(a < tSize)then
-													player:GossipMenuAddItem(3, "|cff00308FNext|r", sender, (a+1)) -- GossipMenuAddItem(icon, name, sender, intid);
-												end
-											
-											player:GossipMenuAddItem(3, "|cff00308FMain Menu|r", 0, 0)
-											
-											break;
-										end	-- max entry check triggered
-								end -- entry team check
-							end -- expansion check
-						end -- for/do loop
+				if((entry == Allowed_Entries) or (a == tSize))then
+				
+						if(a < tSize)then
+							player:GossipMenuAddItem(3, "|cff00308FNext|r", sender, (a+1)) -- GossipMenuAddItem(icon, name, sender, intid);
+						end
+					
+						if(intid > Allowed_Entries)then
 	
-					player:GossipSendMenu(1, unit)
+							player:GossipMenuAddItem(3, "|cff00308FBack|r", sender, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+							
+						end
 	
-				end -- menu team check
+					player:GossipMenuAddItem(3, "|cff00308FMain Menu|r", 0, 0)
+					
+					break;
+				end	-- max entry check triggered
+			end -- for/do loop
+		
+		player:GossipSendMenu(1, unit)
+		
 	end
 end
 
