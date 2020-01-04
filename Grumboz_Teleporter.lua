@@ -1,11 +1,10 @@
-
 -- by slp13at420
 -- Designed For Mangos Eluna
 
 -- EMU : Mangos
 -- Build : non-specific
 -- Type : Eluna script
--- Map/GPS Patch Support : <= 3.3.5a {DoW, TBC, WotLK}
+-- Map/GPS Patch Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
 
 -- Start Date : 01/01/2020
 -- Finish Date : 01/03/2020
@@ -166,7 +165,38 @@ Teleporter = {
 				{"Utgarde Pinnacle", 2, 2, 1, 571, 1203.410034, -4868.589844, 41.248600, 0.283237, 2},
 					};
 			},
-	
+			
+			{"|cff000000Cataclysm Raid Locations|r", 9, 2, 3,
+					{
+				{"Pechschwingenabstieg", 2, 2, 1, 0, -7533.682129, -1209.040039, 477.726227, 1.953624, 3},
+				{"Thron der vier Winde", 2, 2, 1, 1, -11355.214844, 58.152069, 723.883606, 1.976673, 3},
+				{"Brandin Hold", 2, 2, 1, 732,  -1251.937134, 1050.386108, 106.994698, 3.158482, 3},
+				{"Bastion des Zwielichts", 2, 2, 1, 0, -4884.354004, -4253.973633, 827.763611, 2.060737, 3},
+				{"Feuerlande", 2, 2, 1, 1, 3993.743652, -2956.993896, 1002.547424, 1.966209, 3},
+				{"Drachenseele", 2, 2, 1, 1, -8273.353516, -4517.355957, -219.333969, 0.558964, 3},
+				{"Drachenseele", 2, 2, 1, 1, -8273.353516, -4517.355957, -219.333969, 0.558964, 3},
+					};
+			},
+			
+			{"|cff000000Cataclysm Instances|r", 9, 2, 3,
+					{
+				{"Die Todesmine", 2, 2, 1, 0, -11207.520508, 1668.632690, 24.623632, 1.576529, 3},
+				{"Burg Schattenfang", 2, 2, 1, 0, -245.124878, 1534.565063, 76.890091, 1.196693, 3},
+				{"Grim Batol", 2, 2, 1, 0, -4062.229980, -3450.429932, 280.571014, 0.390264, 3},
+				{"Zul Aman", 2, 2, 1, 530, 6851.167480, -7948.453613, 170.061768, 4.694218, 3},
+				{"Zul Gurub", 2, 2, 1, 0, -11916.513672, -1204.576904, 92.287773, 4.729164, 3},
+				{"Der Steinerne Kern", 2, 2, 1, 646, 1020.976868, 654.496826, 156.671310, 4.933526, 3},
+				{"Die Stunde des Zwielichts", 2, 2, 1, 1,  -8292.754883, -4554.543457, -222.483215, 4.710849, 3},
+				{"Brunen der Ewigkeit", 2, 2, 1, 1, -8602.987305, -4031.282715, -208.407211, 1.247818, 3},
+				{"End Zeit", 2, 2, 1, 1,  -8327.620117, -4475.427734, -208.855865, 0.500819, 3},
+				{"Der Vortexgipfel", 2, 2, 1, 1, -11505.550781, -2303.350586, 608.393616, 3.814200, 3},
+				{"Thron der Gezeiten", 2, 2, 1, 0, -5598.150391, 5412.423340, -1798.709961, 5.561488, 3},
+				{"Die Verlorene Stadt von der Tol vir", 2, 2, 1, 1, -10662.940430, -1301.864380, 15.353823, 3.387370, 3},
+				{"Halle der Origination", 2, 2, 1, 1, -10188.481445, -1837.926880, 20.127676, 3.141458, 3},
+				{"Schwarzfelshölen", 2, 2, 1, 0, -7571.896484, -1317.194458, 245.536163, 4.842430, 3},
+					};
+			},
+			
 			{"|cff000000Raid Locations|r", 9, 2, 0,
 					{
 				{"Black Temple", 2, 2, 1, 530, -3649.919922, 317.468994, 35.282700, 2.942850, 1},
@@ -385,8 +415,6 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 					
 						for a = a+intid, tSize do
 						
-						    print(Teleporter[sender][ENTRY_KEY][a][10]);
-						    
 							if(Teleporter[sender][ENTRY_KEY][a][10] <= CORE_EXPANSION)then
 					
 								local eTeam = Teleporter[sender][ENTRY_KEY][a][3];
