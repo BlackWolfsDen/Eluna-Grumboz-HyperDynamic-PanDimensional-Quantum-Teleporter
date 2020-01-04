@@ -27,8 +27,8 @@ local Teleport = {};
 
 -- icon 0=bubble::1=bag::2=flight::3=book::4=wheel::5=wheel::6=bag dot::7=bubble dots::8=tabard::9=2swords::10=dot
 
--- team :: 0 = ally, 1 = horde,  2 = horde/ally, 3 = gm /:T:\ 2 checks for a reason
--- 1 menu team check so you can make faction only menu // 1 location team check so
+-- team :: 0 = ally, 1 = horde,  2 = horde/ally, 3 = gm /:T:\ 2 team menu/location checks for a reason
+-- 1 menu team check so you can make faction only menus // 1 location team check so
 -- yea ofc so you can have faction specific tele points.
 -- 2 expansion checks Menu/location so this script can work seamlesly on any Mangos build
 -- without any editing. it just adapts ...
