@@ -6,7 +6,7 @@
 -- Dev point : Scripting Complete
 -- Release Stage : open Beta testing - READY
 --
--- look out Mangos .., Grumbo'z Coming !
+-- look out Mangos .., Grumbo'z Coming ! RUN !!!
 --
 -- Emulator Support Info :
 -- EMU : Mangos
