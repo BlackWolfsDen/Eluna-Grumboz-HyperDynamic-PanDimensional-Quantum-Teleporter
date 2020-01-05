@@ -340,7 +340,7 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 			    			
 			    			entry = entry+1;
 			    		
-			    		end -- Level Check
+			    			end -- Level Check
 					end -- team check
 		
 			   		if(entry == Allowed_Entries)then
@@ -401,7 +401,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 						    			
 					    			entry = entry+1;
 					    			
-					    	end -- level check
+					    		end -- level check
 						end -- Team check
 				
 				   		if(entry == Allowed_Entries)then
