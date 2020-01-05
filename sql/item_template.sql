@@ -1,2 +1,2 @@
-REPLACE INTO `item_template` (`entry`, `class`, `name`, `displayid`, `Quality`, `Flags`, `ItemLevel`, `maxcount`, `stackable`, `RangedModRange`, `spellid_1`, `spelltrigger_1`, `spellcharges_1`, `spellppmRate_1`, `spellcooldown_1`, `spellcategory_1`, `spellcategorycooldown_1`, `bonding`, `description`) VALUES 
-(40582, 15, 'Grumbo`z Tele-Stone', 6418, 2, 64, 1, 1, 1, 0, 7265, 0, 0, 0, -1, 0, -1, 1, 'your handy dandy pocket teleporter.');
+REPLACE INTO `item_template` (`entry`, `class`, `name`, `displayid`, `Quality`, `Flags`, `ItemLevel`, `maxcount`, `stackable`, `spellid_1`, `spelltrigger_1`, `spellcharges_1`, `spellppmRate_1`, `spellcooldown_1`, `spellcategory_1`, `spellcategorycooldown_1`, `bonding`, `description`) VALUES 
+(40582, 15, 'Grumbo`z Tele-Stone', 6418, 2, 64, 1, 1, 1, 7265, 0, 0, 0, -1, 0, -1, 1, 'your handy dandy pocket teleporter.');
