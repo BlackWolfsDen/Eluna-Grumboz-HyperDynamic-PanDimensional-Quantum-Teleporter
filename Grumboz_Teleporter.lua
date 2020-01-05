@@ -13,9 +13,6 @@
 -- Type : Eluna script
 -- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595)
 -- Map/GPS expansion Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
---
--- tele points are all from Rochet2's sql teleporter. yes 1 at a time I added them manually.
--- parses for : team, level, GM, and expansion.
 
 -- tele points are all from Rochet2's sql teleporter. yes 1 at a time I added them manually.
 -- parses for : team, level, GM, and expansion.
@@ -321,6 +318,7 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 	    local entry = 0;
 	    local sSize = #Teleporter;
 	    local pTeam = player:GetTeam();
+	    local pLevel = player:GetLevel();
 	    
 			for i = i+1, sSize do
 				
@@ -330,16 +328,19 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 					
 					if(team == 2)or(team == pTeam)or(player:IsGM() == true)then
 					
-						local color;
-
-							if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
-							if(team == pTeam)then color = FRIENDLY;end
-							if(team == 3)then color = GAMEMASTER;end
-
-						player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
-		    			
-		    			entry = entry+1;
-		    			
+						if(pLevel >= level)then
+						
+							local color;
+	
+								if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
+								if(team == pTeam)then color = FRIENDLY;end
+								if(team == 3)then color = GAMEMASTER;end
+	
+							player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+			    			
+			    			entry = entry+1;
+			    		
+			    		end -- Level Check
 					end -- team check
 		
 			   		if(entry == Allowed_Entries)then
@@ -374,7 +375,8 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 	    local entry = 0;
 	    local sSize = #Teleporter;
 	    local pTeam = player:GetTeam();
-
+		local pLevel = player:GetLevel();
+		
 		    if(intid == 0)then
 		    	intid = 1;
 		    end
@@ -386,16 +388,20 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 					if((CORE_EXPANSION >= expansion_low) and (CORE_EXPANSION <= expansion_high))then
 		
 						if((team == 2) or (team == pTeam) or player:IsGM())then
-						
-							local color;
-	
-								if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
-								if(team == pTeam)then color = FRIENDLY;end
-								if(team == 3)then color = GAMEMASTER;end
-	
-								player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+
+							if(pLevel >= level)then
+							
+								local color;
+		
+									if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
+									if(team == pTeam)then color = FRIENDLY;end
+									if(team == 3)then color = GAMEMASTER;end
+		
+									player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+						    			
+					    			entry = entry+1;
 					    			
-				    			entry = entry+1;
+					    	end -- level check
 						end -- Team check
 				
 				   		if(entry == Allowed_Entries)then
@@ -422,15 +428,18 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 
 	if (intid > (intoffset))then
 
+		player:GossipComplete();
+
 		local int = intid-intoffset;
 		
 		local _, _, _, _, map, x, y, z, o, _ = table.unpack(Teleporter[sender][ENTRY_KEY][int]);
 		
+		player:RemoveAura(7265);
+		
 		player:Teleport(map, x, y, z, o);
-		player:CastSpell(player, 7265, true);
+		
+		player:CastSpell(player, 7265, false);
 	
-		player:GossipComplete();
-
 		return;
 	end
 
@@ -452,6 +461,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 		local entry = 0;
 		local tSize = #Teleporter[sender][ENTRY_KEY];
 		local pTeam = player:GetTeam();
+		local pLevel = player:GetLevel();
 		
 			for a = a+intid, tSize do
 			
@@ -460,21 +470,20 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 				if((CORE_EXPANSION >= expansion_low) and (CORE_EXPANSION <= expansion_high))then
 		
 						if((team == 2) or (team == pTeam) or player:IsGM())then
-					
-							local color;
+
+							if(pLevel >= level)then
 							
-							
-							
-								if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
-								if(team == pTeam)then color = FRIENDLY;end
-								if(team == 3)then color = GAMEMASTER;end
+								local color;
 								
-							player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset))
-								
-							entry = entry+1;
-					
+									if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
+									if(team == pTeam)then color = FRIENDLY;end
+									if(team == 3)then color = GAMEMASTER;end
+									
+								player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset))
+									
+								entry = entry+1;
+							end -- level Check
 						end -- entry team check
-						
 				end -- expansion check
 	
 				if((entry == Allowed_Entries) or (a == tSize))then
