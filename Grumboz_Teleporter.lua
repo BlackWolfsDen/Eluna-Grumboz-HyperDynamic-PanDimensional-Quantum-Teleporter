@@ -11,19 +11,8 @@
 -- Emulator Support Info :
 -- EMU : Mangos
 -- Type : Eluna script
--- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595)-- Creator Info :
--- by slp13at420
--- Designed For Mangos Eluna
--- Start Date : 01/01/2020
--- Finish Date : 01/04/2020
--- Dev point : PUBLIC_TESTING open Beta testing
-
--- Emulator Support Info :
--- EMU : Mangos
--- Type : Eluna script
 -- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595)
--- Map/GPS expansion Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
-
+--
 -- tele points are all from Rochet2's sql teleporter. yes 1 at a time I added them manually.
 -- parses for : team, level, GM, and expansion.
 
