@@ -338,7 +338,7 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 	
 							player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
 			    			
-			    			entry = entry+1;
+			    				entry = entry+1;
 			    		
 			    			end -- Level Check
 					end -- team check
