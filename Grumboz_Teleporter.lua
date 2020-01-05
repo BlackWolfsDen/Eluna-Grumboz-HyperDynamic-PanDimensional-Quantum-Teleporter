@@ -262,28 +262,6 @@ Teleporter = {
 
 			{"Locations 1", 10, 2, 0, {};
 			},
-
-			{"Locations 2", 10, 2, 0, {};
-			},
-
-			{"Locations 3", 10, 2, 0, {};
-			},
-
-			{"Locations 4", 10, 2, 0, {};
-			},
-
-			{"Locations 5", 10, 2, 0, {};
-			},
-
-			{"Locations 6", 10, 2, 0, {};
-			},
-
-			{"Locations 7", 10, 2, 0, {};
-			},
-
-			{"Locations 8", 10, 2, 0, {};
-			},
-
 };
 
 --[[
