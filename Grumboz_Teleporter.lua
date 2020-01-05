@@ -50,7 +50,7 @@ local Teleport = {};
 
 -- Populate the Table --
 Teleporter = {
-			{"Eastern Kingdoms", 2, 2, 0, 4,
+			{"Eastern Kingdoms", 2, 2, 1, 0, 4,
 					{
 				{"GuruBashi Arena", 9, 2, 1, 0, -13232.232422, 220.996262, 32.145123, 1.095633, 0, 4},
 				{"Elwynn Forest", 2, 2, 1, 0, -9449.059570, 64.839203, 56.112045, 3.070470, 0, 4},
@@ -80,7 +80,7 @@ Teleporter = {
 					};
 			},
 		
-			{"Kalimdor", 2, 2, 0, 4,
+			{"Kalimdor", 2, 2, 1, 0, 4,
 						{
 				{"Azuremyste Isle", 2, 0, 1, 530, -4192.620117, -12576.700195, 36.759800, 1.628130, 1, 4},
 				{"Teldrassil", 2, 0, 1, 1, 9887.541992, 918.218750, 1307.431885, 0.313330, 0, 4},
@@ -104,7 +104,7 @@ Teleporter = {
 					};
 			},	
 			
-			{"Outland", 2, 2, 1, 4,
+			{"Outland", 2, 2, 1, 1, 4,
 					{
 				{"HellFire Peninsula", 2, 2, 1, 530, -207.335007, 2035.920044, 96.463997, 1.596760, 1, 4},
 				{"Zangarmarsh", 2, 2, 1, 530, -220.296997, 5378.580078, 23.322300, 1.617180, 1, 4},
@@ -117,7 +117,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Northrend", 2, 2, 1, 4,
+			{"Northrend", 2, 2, 1, 1, 4,
 					{
 				{"Borean Tundra", 2, 2, 1, 571, 2954.239990, 5379.129883, 60.453800, 2.555440, 1, 4},
 				{"Howling Fjord", 2, 2, 1, 571, 682.848022, -3978.300049, 230.160995, 1.542070, 1, 4},
@@ -132,7 +132,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Classic Dungeons", 9, 2, 0, 4,
+			{"Classic Dungeons", 9, 2, 1, 0, 4,
 					{
 				{"Gnomeregan", 2, 0, 1, 0, -5163.540036, 925.422974, 257.179596, 1.472128, 0, 4},
 				{"The Deadmines", 2, 0, 1, 0, 11209.599609, 1666.540039, 24.697399, 1.420530, 1, 4},
@@ -156,7 +156,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Burning Crusades Dungeons", 9, 2, 1, 4,
+			{"Burning Crusades Dungeons", 9, 2, 1, 1, 4,
 					{
 				{"Auchindoun", 2, 2, 1, 530, -3324.489990, 4943.450195, -101.238998, 4.639010, 1, 4},
 				{"Caverns of Time", 2, 2, 1, 1, -8369.650391, -4253.109863, -204.272003, 3.577925, 1, 4},
@@ -167,7 +167,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Wotlk Dungeons", 9, 2, 2, 4,
+			{"Wotlk Dungeons", 9, 2, 1, 2, 4,
 					{
 				{"Azjol-Nerub", 2, 2, 1, 571, 3707.860107, 2150.229980, 36.756954, 3.220000, 2, 4},
 				{"The Culling of Stratholme", 2, 2, 1, 1, -8756.389648, -4440.680176, -199.489014, 4.662890, 2, 4},
@@ -184,7 +184,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Cataclysm Instances", 9, 2, 3, 4,
+			{"Cataclysm Instances", 9, 2, 1, 3, 4,
 					{
 				{"The Deadmines", 2, 2, 1, 0, -11207.520508, 1668.632690, 24.623632, 1.576529, 3, 4},
 				{"Shadowfang Keep", 2, 2, 1, 0, -245.124878, 1534.565063, 76.890091, 1.196693, 3, 4},
@@ -203,7 +203,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Cataclysm Raid Locations", 9, 2, 3, 4,
+			{"Cataclysm Raid Locations", 9, 2, 1, 3, 4,
 					{
 				{"Blackwing Decent", 2, 2, 1, 0, -7533.682129, -1209.040039, 477.726227, 1.953624, 3, 4},
 				{"Throne of the 4 Winds", 2, 2, 1, 1, -11355.214844, 58.152069, 723.883606, 1.976673, 3, 4},
@@ -214,7 +214,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Raid Locations", 9, 2, 0, 4,
+			{"Raid Locations", 9, 2, 1, 0, 4,
 					{
 				{"Black Temple", 2, 2, 1, 530, -3649.919922, 317.468994, 35.282700, 2.942850, 1, 4},
 				{"BlackWing Lair", 2, 2, 1, 229, 152.451004, -474.881012, 116.839996, 0.001073, 0, 4},
@@ -241,7 +241,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Malls", 10, 2, 0, 4,
+			{"Malls", 10, 2, 1, 0, 4,
 					{
 				{"Orgrimmar", 1, 1, 1, 1, 1600.981689, -4378.820313, 9.998322, 5.248190, 0, 4}, -- Horde
 				{"IronForge", 1, 0, 1, 0, -4902.000488, -960.816162, 501.458954, 2.207237, 0, 4}, -- Ally
@@ -249,7 +249,7 @@ Teleporter = {
 					};
 			},
 			
-			{"Custom Location", 10, 2, 0, 4,
+			{"Custom Location", 10, 2, 1, 0, 4,
 					{
 				{"StormWind", 2, 0, 1, 0, -8842.089844, 626.357971, 94.086632, 0.440620, 0, 4},
 				{"Darnassus", 2, 0, 1, 1, 9870.209961, 2493.469971, 1315.876221, 5.974544, 0, 4},
@@ -263,22 +263,22 @@ Teleporter = {
 					};
 			},
 			
-			{"Event areas", 10, 2, 0, 4, {};
+			{"Event areas", 10, 2, 1, 0, 4, {};
 			},
 					
-			{"GM Locations", 10, 3, 0, 4,
+			{"GM Locations", 10, 3, 1, 0, 4,
 					{
 				{"GM Island", 1, 3, 1, 1, 16205.684570, 16215.493164, 1.10999, 1.064954, 0, 4},
 					};
 			},
 
-			{"Locations 1", 10, 2, 0, 4, {};
+			{"Locations 1", 10, 2, 1, 0, 4, {};
 			},
 
-			{"Locations 2", 10, 2, 0, 4, {};
+			{"Locations 2", 10, 2, 1, 0, 4, {};
 			},
 
-			{"Locations 3", 10, 2, 0, 4, {};
+			{"Locations 3", 10, 2, 1, 0, 4, {};
 			},
 };
 
@@ -295,7 +295,7 @@ local itemid = 40582
 local intoffset = 10000;
 local Allowed_Entries = 12;
 local CORE_EXPANSION = GetCoreExpansion();
-local ENTRY_KEY = 6;
+local ENTRY_KEY = 7;
 
 -- Define Menu Entry Colors --
 local FRIENDLY = "|cff004D0D";
@@ -322,7 +322,7 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 	    
 			for i = i+1, sSize do
 				
-				local name, icon, team, expansion_low, expansion_high, _ = table.unpack(Teleporter[i]);
+				local name, icon, team, level, expansion_low, expansion_high, _ = table.unpack(Teleporter[i]);
 
 					if((CORE_EXPANSION >= expansion_low) and (CORE_EXPANSION <= expansion_high))then
 					
@@ -338,9 +338,9 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 	
 							player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
 			    			
-			    				entry = entry+1;
+			    			entry = entry+1;
 			    		
-			    			end -- Level Check
+			    		end -- Level Check
 					end -- team check
 		
 			   		if(entry == Allowed_Entries)then
@@ -383,7 +383,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 	    
 			for i = intid, sSize do
 			
-				local name, icon, team, expansion_low, expansion_high, _ = table.unpack(Teleporter[i]);
+				local name, icon, team, level, expansion_low, expansion_high, _ = table.unpack(Teleporter[i]);
 
 					if((CORE_EXPANSION >= expansion_low) and (CORE_EXPANSION <= expansion_high))then
 		
@@ -401,7 +401,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 						    			
 					    			entry = entry+1;
 					    			
-					    		end -- level check
+					    	end -- level check
 						end -- Team check
 				
 				   		if(entry == Allowed_Entries)then
