@@ -2,8 +2,8 @@
 -- by slp13at420
 -- Designed For Mangos Eluna
 -- Start Date : 01/01/2020
--- Finish Date : 01/03/2020
--- Dev point : open Beta testing
+-- Finish Date : 01/04/2020
+-- Dev point : PUBLIC_TESTING open Beta testing
 
 -- Emulator Support Info :
 -- EMU : Mangos
@@ -309,31 +309,48 @@ local COLOR_END = "|r";
 
 local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 
+--______________________--
+--------------------------
+-- Teleporter Main Menu --
+--                      --
+-- Menu Table BluePrint : Teleporter[x]{"Menu Title", icon, team, expansion minimum, {location table}}
+--------------------------
+
 	if (player:IsInCombat()~=true)then	-- Show main menu
 
 	    local i = 0;
 	    local entry = 0;
 	    local sSize = #Teleporter;
+	    local pTeam = player:GetTeam();
 	    
 			for i = i+1, sSize do
 				
-				if(Teleporter[i][4] <= CORE_EXPANSION)then
-				
-					if(Teleporter[i][3] == 2)or(Teleporter[i][3] == player:GetTeam())or(player:IsGM() == true)then
+				local name, icon, team, expansion, _ = table.unpack(Teleporter[i]);
+
+				if(expansion <= CORE_EXPANSION)then
 					
-						player:GossipMenuAddItem(Teleporter[i][2], Teleporter[i][1], i, 1)
-			    			
+					if(team == 2)or(team == pTeam)or(player:IsGM() == true)then
+					
+						local color;
+
+							if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
+							if(team == pTeam)then color = FRIENDLY;end
+							if(team == 3)then color = GAMEMASTER;end
+
+						player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+		    			
 		    			entry = entry+1;
-					end
+		    			
+					end -- team check
 		
 			   		if(entry == Allowed_Entries)then
 		
-						player:GossipMenuAddItem(7, "next..", 0, i+1) -- GossipMenuAddItem(icon, name, sender, intid);
+						player:GossipMenuAddItem(7, "|cff00308Fnext..|r", 0, i+1)
 		
 						break;
 			   		end
-		   		end
-			end
+		   		end -- Expansion check
+			end -- if/do loop
 		
 	    player:GossipSendMenu(1, unit)
 
@@ -344,54 +361,71 @@ end
 
 local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code)
 
+--_______________________________--
+-----------------------------------
+-- Teleporter Main Menu extended --
+--                               --
+-- Menu Table BluePrint : Teleporter[x]{"Menu Title", icon, team, expansion minimum, {location table}}
+-----------------------------------
+
 	if (sender == 0) then -- Continue Menu
 
-	    -- Teleporter[key]{"Menu Title", icon, team, expansion
 	    
-		local i;
+	    local i = 0;
 	    local entry = 0;
 	    local sSize = #Teleporter;
+	    local pTeam = player:GetTeam();
+
+		    if(intid == 0)then
+		    	intid = 1;
+		    end
 	    
-	    if(intid == 0)then
-	    	intid = 1;
-	    end
-	    
-		for i = intid, sSize do
+			for i = intid, sSize do
+			
+				local name, icon, team, expansion, _ = table.unpack(Teleporter[i]);
+
+					if(expansion <= CORE_EXPANSION)then
 		
-			if(Teleporter[i][4] <= CORE_EXPANSION)then
-
-				local mTeam = Teleporter[i][3];
-				local pTeam = player:GetTeam();
+						if((team == 2) or (team == pTeam) or player:IsGM())then
+						
+							local color;
+	
+								if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
+								if(team == pTeam)then color = FRIENDLY;end
+								if(team == 3)then color = GAMEMASTER;end
+	
+								player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+					    			
+				    			entry = entry+1;
+						end -- Team check
 				
-				if((mTeam == 2) or (mTeam == pTeam) or player:IsGM())then
-				
-					player:GossipMenuAddItem(Teleporter[i][2], Teleporter[i][1], i, 1);
-		    			
-	    			entry = entry+1;
-				end
-	
-		   		if(entry == Allowed_Entries)then
-	
-					player:GossipMenuAddItem(3, "next..", 0, i+1) -- GossipMenuAddItem(icon, name, sender, intid);
-	
-					break;
-		   		end
-		   	end	   		
-		end
+				   		if(entry == Allowed_Entries)then
+			
+							player:GossipMenuAddItem(3, "|cff00308Fnext..|r", 0, i+1)
+			
+							break;
+				   		end -- Entry Limit check
+				   	end -- Expansion check	   		
+			end -- if/or loop
 
-		if(intid >= Allowed_Entries) then 
-			player:GossipMenuAddItem(3, "Back..", 0, 1)
-		end
+			if(intid >= Allowed_Entries) then 
+				player:GossipMenuAddItem(3, "|cff00308FBack..|r", 0, 1)
+			end
 
 		player:GossipSendMenu(1, unit);
 		return;
 	end
-	
+
+
+---------------------
+-- Teleport Player --
+---------------------
+
 	if (intid > (intoffset))then
 
 		local int = intid-intoffset;
 		
-		local name, icon, team, level, map, x, y, z, o, expansion = table.unpack(Teleporter[sender][ENTRY_KEY][int]);
+		local _, _, _, _, map, x, y, z, o, _ = table.unpack(Teleporter[sender][ENTRY_KEY][int]);
 		
 		player:Teleport(map, x, y, z, o);
 	
@@ -400,8 +434,13 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 		return;
 	end
 
+--____________________________--
+--------------------------------
 -- teleport location sub menu --
---  {"location name", icon, team, minimum level, map, x, y, z, o},}
+
+--  Location Table blueprint = {"location name", icon, team, minimum level, map, x, y, z, o, expansion minimum},}
+--------------------------------
+
 
 	if (sender >= 1)then-- Show teleport sub-menu
 	
@@ -431,7 +470,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 								if(eTeam == pTeam)then color = FRIENDLY;end
 								if(eTeam == 3)then color = GAMEMASTER;end
 								
-							player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset)) -- GossipMenuAddItem(icon, name, sender, intid);
+							player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset))
 								
 							entry = entry+1;
 					
@@ -442,12 +481,12 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 				if((entry == Allowed_Entries) or (a == tSize))then
 				
 						if(a < tSize)then
-							player:GossipMenuAddItem(3, "|cff00308FNext|r", sender, (a+1)) -- GossipMenuAddItem(icon, name, sender, intid);
+							player:GossipMenuAddItem(3, "|cff00308FNext|r", sender, (a+1))
 						end
 					
 						if(intid > Allowed_Entries)then
 	
-							player:GossipMenuAddItem(3, "|cff00308FBack|r", sender, 1) -- GossipMenuAddItem(icon, name, sender, intid);
+							player:GossipMenuAddItem(3, "|cff00308FBack|r", sender, 1)
 							
 						end
 	
