@@ -1,4 +1,4 @@
-# [Mangos][Eluna] Grumboz HyperDynamic PanDimensional Teleporter
+# [Mangos][Eluna] Grumboz HyperDynamic PanDimensional Quantum Teleporter
 An Eluna teleporter script for Mangos
 
 a simple self contained teleporter script.
