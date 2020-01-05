@@ -21,4 +21,4 @@ Menus and location entries can also be parsed for expansions now !!!
 # !!???! 1 teleporter for DoW, TBC, WotLK AND Cata !???!!
 
 
-# Still under Construction BUGZ EXPECTED IF YOU TRY THIS 1-4-2020
+# Public Beta Testing - Ready
