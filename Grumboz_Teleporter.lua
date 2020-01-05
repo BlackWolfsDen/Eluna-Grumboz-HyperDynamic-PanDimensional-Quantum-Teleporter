@@ -5,7 +5,9 @@
 -- Finish Date : 01/04/2020
 -- Dev point : Scripting Complete
 -- Release Stage : open Beta testing - READY
-
+--
+-- look out Mangos .., Grumbo'z Coming !
+--
 -- Emulator Support Info :
 -- EMU : Mangos
 -- Type : Eluna script
