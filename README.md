@@ -8,6 +8,8 @@ tele table.
 
 
 Includes sql for in-game tele stone.
+
+
 Includes entries for DoW, TBC, WotLK, Cata
 
 
