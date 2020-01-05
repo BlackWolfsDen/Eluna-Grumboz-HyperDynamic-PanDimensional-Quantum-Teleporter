@@ -3,7 +3,7 @@
 -- Designed For Mangos Eluna
 -- Start Date : 01/01/2020
 -- Finish Date : 01/04/2020
--- Dev point : PUBLIC_TESTING open Beta testing
+-- Dev point : Code->Completed : PUBLIC_TESTING_READY open Beta testing
 
 -- Emulator Support Info :
 -- EMU : Mangos
