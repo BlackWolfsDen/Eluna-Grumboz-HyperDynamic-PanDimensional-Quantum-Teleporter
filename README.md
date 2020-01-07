@@ -1,16 +1,20 @@
 # [Mangos][Eluna] Grumboz Hyper-Dynamic Pan-Dimensional Quantum Teleporter
 An Eluna teleporter script for Mangos
 
+# Perfect for those multi-realm / multi-build servers.
+
 a simple self contained teleporter script.
-all coords are in-script and table stored.
+all Menus/coords are stored in an easy2edit DB.
 The core is designed for a dynamicly growing and changing 
-tele table.
+DB.
 
 
-Includes sql for in-game tele stone.
+Includes :
+  sql DB file.
+  sql for in-game tele stone.
+  main lua file.
 
-
-Includes entries for DoW, TBC, WotLK, Cata
+Includes tele menu/entries for DoW, TBC, WotLK, Cata
 
 
 Designed the way a free2public teleporter should be.  ... addaptible to diversity
