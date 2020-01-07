@@ -2,7 +2,7 @@
 
 This is a global accessed database. accessed by any copies of the teleporter
 scripts you use if you host multi/realm multi/build .
-You can add new Menu's and entries plus limit there access to build, level, team.
+You can add new Menu's and entries plus set there limits to build, level, team.
  allowing the script to filter out any menus or entries that may not exsist in lower
  builds or may be team specific.
  
