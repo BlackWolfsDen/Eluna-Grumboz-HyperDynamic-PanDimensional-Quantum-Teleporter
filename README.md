@@ -10,9 +10,9 @@ DB.
 
 
 Includes :
-  sql DB file.
-  sql for in-game tele stone.
-  main lua file.
+  *sql DB file.
+  *sql for in-game tele stone.
+  *main lua file.
 
 Includes tele menu/entries for DoW, TBC, WotLK, Cata
 
