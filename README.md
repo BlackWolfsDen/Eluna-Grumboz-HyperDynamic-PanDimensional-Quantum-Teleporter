@@ -1,5 +1,6 @@
 # [Mangos][Eluna] Grumboz Hyper-Dynamic Pan-Dimensional Quantum Teleporter
 An Eluna teleporter script for Mangos
+designed to support multiple world servers with just 1 DB.
 
 # Perfect for those multi-realm / multi-build servers.
 
