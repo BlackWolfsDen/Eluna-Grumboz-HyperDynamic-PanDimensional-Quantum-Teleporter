@@ -3,9 +3,8 @@ An Eluna teleporter script for Mangos
 
 # Perfect for those multi-realm / multi-build servers.
 
-a simple self contained teleporter script.
 all Menus/coords are stored in an easy2edit DB.
-The core is designed for a dynamicly growing and changing 
+The core script is designed for a dynamicly growing and changing 
 DB.
 
 
@@ -22,7 +21,7 @@ from server to server and expansion to expansion with easy to expand table that 
 no more script core edditing to add new menus and/or locations with gps's.
 
 
-just add a new menu, or add custom location data to an exsisting Menu in the table and go !!
+just add a new menu, or custom location data to an exsisting Menu in the DB and go !!
 
 Menus and location entries can also be parsed for expansions now !!!
 
