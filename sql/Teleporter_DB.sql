@@ -1,56 +1,58 @@
+-- --------------------------------------------------------
+-- Grumbo`z HyperDynamic PanDimensional Quantum Teleporter DB
+-- By Slp13at420 of EmuDevs.com
+-- --------------------------------------------------------
 /*
-
 This is a global accessed database. accessed by any copies of the teleporter
-scripts you use if you host multi/realm multi/build .
-You can add new Menu's and entries plus set there limits to build, level, team.
+script you use if you host multi/realm multi/build or single realm/build.
+You can add new Menu's and entries plus limit there access to : Team, Level, Build, RealmID
  allowing the script to filter out any menus or entries that may not exsist in lower
- builds or may be team specific.
- 
- By Slp13at420 of EmuDevs Om Nom Nom Nom nom nom nom
+ builds or may be team specific, or one or more of your realms has custom imported maps.
 */
 
 DROP DATABASE IF EXISTS `grumboz_quantum_teleporter`;
 CREATE DATABASE IF NOT EXISTS `grumboz_quantum_teleporter` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
 USE `grumboz_quantum_teleporter`;
 
+DROP TABLE IF EXISTS `entries`;
 DROP TABLE IF EXISTS `menus`;
 CREATE TABLE IF NOT EXISTS `menus` (
   `menu_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT COMMENT 'This id is used to link a menu to its entries.',
   `menu_title` varchar(50) NOT NULL DEFAULT 'menu_name' COMMENT 'Menu name.',
   `menu_icon` tinyint(2) unsigned NOT NULL DEFAULT '2' COMMENT 'Gossip Menu icon id.',
-  `menu_team` tinyint(1) unsigned NOT NULL DEFAULT '2' COMMENT 'team id required to access this menu. 0=ally//1=horde//2=both//3=GM',
+  `menu_team` tinyint(1) unsigned NOT NULL DEFAULT '2' COMMENT 'team id required to access this menu. 0=ally//1=horde//2=both_PvP//3=both neutral//4=GM',
   `menu_level` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT 'minimum player level to access this menu',
   `menu_expansion_low` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'lowest expansion supported by this menu.',
   `menu_expansion_high` tinyint(1) unsigned NOT NULL DEFAULT '4' COMMENT 'highest expansion supported by this expansion',
+  `menu_realm_low` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT 'lowest realm ID allowed to access menu.',
+  `menu_realm_high` tinyint(3) unsigned NOT NULL DEFAULT '255' COMMENT 'highest realm ID allowed to access this menu . if equal to realm_id_low then only x realm will access.',
   UNIQUE KEY `menu_id` (`menu_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='This table stores the individual Main Menu''s data.\r\nThis is where you will add any new Menus you want to add.';
 
-INSERT INTO `menus` (`menu_id`, `menu_title`, `menu_icon`, `menu_team`, `menu_level`, `menu_expansion_low`, `menu_expansion_high`) VALUES
-	(1, 'Eastern Kingdoms', 2, 2, 1, 0, 4),
-	(2, 'Kalimdor', 2, 2, 1, 0, 4),
-	(3, 'Outland', 2, 2, 1, 1, 4),
-	(4, 'Northrend', 2, 2, 1, 1, 4),
-	(5, 'Classic Dungeons', 9, 2, 1, 0, 4),
-	(6, 'Burning Crusades Dungeons', 9, 2, 1, 1, 4),
-	(7, 'Wotlk Dungeons', 9, 2, 1, 2, 4),
-	(8, 'Cataclysm Instances', 9, 2, 1, 3, 4),
-	(9, 'Cataclysm Raid Locations', 9, 2, 1, 3, 4),
-	(10, 'Raid Locations', 9, 2, 1, 0, 4),
-	(11, 'Malls', 10, 2, 1, 0, 4),
-	(12, 'Custom Location', 10, 2, 1, 0, 4),
-	(13, 'Event areas', 10, 2, 1, 0, 4),
-	(14, 'GM Locations', 10, 3, 1, 0, 4),
-	(15, 'Locations 1', 10, 2, 1, 0, 4),
-	(16, 'Locations 2', 10, 2, 1, 0, 4),
-	(17, 'Locations 3', 10, 2, 1, 0, 4);
+-INSERT INTO `menus` (`menu_id`, `menu_title`, `menu_icon`, `menu_team`, `menu_level`, `menu_expansion_low`, `menu_expansion_high`, `menu_realm_low`, `menu_realm_high`) VALUES
+	(1, 'Eastern Kingdoms', 2, 2, 1, 0, 4, 1, 255),
+	(2, 'Kalimdor', 2, 2, 1, 0, 4, 1, 255),
+	(3, 'Outland', 2, 2, 1, 1, 4, 1, 255),
+	(4, 'Northrend', 2, 2, 1, 1, 4, 1, 255),
+	(5, 'Classic Dungeons', 9, 2, 1, 0, 4, 1, 255),
+	(6, 'Burning Crusades Dungeons', 9, 2, 1, 1, 4, 1, 255),
+	(7, 'Wotlk Dungeons', 9, 2, 1, 2, 4, 1, 255),
+	(8, 'Cataclysm Instances', 9, 2, 1, 3, 4, 1, 255),
+	(9, 'Cataclysm Raid Locations', 9, 2, 1, 3, 4, 1, 255),
+	(10, 'Raid Locations', 9, 2, 1, 0, 4, 1, 255),
+	(11, 'Malls', 10, 2, 1, 0, 4, 1, 255),
+	(12, 'Custom Location', 10, 2, 1, 0, 4, 1, 255),
+	(13, 'Event areas', 10, 2, 1, 0, 4, 1, 255),
+	(14, 'GM Locations', 10, 4, 1, 0, 4, 1, 255),
+	(15, 'MoP Custom Maps', 10, 2, 1, 2, 2, 5, 6),
+	(16, 'WoD Custom Maps', 10, 2, 1, 1, 1, 7, 7),
+	(17, 'Locations 3', 10, 2, 1, 0, 4, 1, 255);
 
-DROP TABLE IF EXISTS `entries`;
 CREATE TABLE IF NOT EXISTS `entries` (
   `menu_id` tinyint(4) NOT NULL COMMENT 'Menu_Id from menus table this entry will belong to.',
   `entry_title` varchar(255) NOT NULL DEFAULT 'ENTRY_TITLE' COMMENT 'tele location name.',
   `entry_icon_id` tinyint(2) NOT NULL DEFAULT '9' COMMENT 'gossip menu icon id - for tele points its usually 9.',
-  `entry_team_id` tinyint(1) NOT NULL DEFAULT '2' COMMENT 'id of team allowed to access tele entry . 0=ally//1=horde/2=both/3=GM',
+  `entry_team_id` tinyint(1) NOT NULL DEFAULT '2' COMMENT 'id of team allowed to access tele entry . 0=ally//1=horde//2=both PvP//3=both neutral//4=GM',
   `entry_min_level` tinyint(3) NOT NULL DEFAULT '1' COMMENT 'minimum player level required to access tele location.',
   `map_id` mediumint(9) NOT NULL,
   `x` float NOT NULL,
