@@ -26,9 +26,9 @@ local expansion = (GetCoreName()..GetCoreExpansion());
 
 -- Table BluePrint --
 --
--- 		{"Menu Title", menu_icon, menu_team, expansion_low, expansion_high,
+-- 	Menu :	{menu_id, "Menu Title", menu_icon, menu_team, expansion_low, expansion_high, realmid_low, realmid_high}
 --
---			{"location title", loc_icon, loc_team, loc_minimum_level, map, x, y, z, o, expansion_low, expansion_high},}
+--	Entry :	[menu_id]{"location title", loc_icon, loc_team, loc_minimum_level, map, x, y, z, o, expansion_low, expansion_high}
 --
 --
 -- icon : 0=bubble::1=bag::2=flight::3=book::4=wheel::5=wheel::6=bag dot::7=bubble dots::8=tabard::9=2swords::10=dot
@@ -141,7 +141,7 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 -----G-------------s------
 -- Teleporter Main Menu --
 --                      --
--- Menu Table BluePrint : TeleportMenu[Menu_Id]{"Menu Title", icon, team, level, expansion_low, expansion_high}
+-- Menu Table BluePrint : TeleportMenu[Menu_Id]{"Menu Title", icon, team, level, expansion_low, expansion_high, realmid_low, realmid_high}
 --l------------------R----
 
 	if (player:IsInCombat()~=true)then	-- Show main menu
@@ -201,7 +201,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 -----p-----U-----------------1-----
 -- Teleporter Main Menu extended --
 --                               --
--- Menu Table BluePrint : TeleportEntry[Menu_id][Entry_Id]{"Menu Title", icon, team, expansion low, expansion high, {location table}}
+-- Menu Table BluePrint : TeleportEntry[Menu_id]{"Menu Title", icon, team, expansion low, expansion high, realmid_low, realmid_high}
 ------3---------------M------------
 
 	if (sender == 0) then -- Continue Menu
@@ -284,7 +284,7 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 ---------------------------2----
 -- teleport location sub menu --
 
---  Location Table blueprint = {"location name", icon, team, minimum level, map, x, y, z, o, expansion minimum},}
+--  Location Table blueprint = [menu_id]{"location name", icon, team, minimum level, map, x, y, z, o, expansion minimum},}
 -------0----------------O-------
 
 
@@ -353,6 +353,7 @@ RegisterItemGossipEvent(itemid, 2, TeleporterOnGossipSelect)
 print("+          Grumboz          +");
 print("+       Hyper-Dynamic       +");
 print("+      Pan-Dimensional      +");
+print("+          Quantum          +");
 print("+        Teleporter         +");
 print("+          online           +");
 print("+                           +");
