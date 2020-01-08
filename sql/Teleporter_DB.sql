@@ -1,11 +1,12 @@
 -- --------------------------------------------------------
 -- Grumbo`z HyperDynamic PanDimensional Quantum Teleporter DB
 -- By Slp13at420 of EmuDevs.com
+-- V2.0 Global DB core
 -- --------------------------------------------------------
 /*
 This is a global accessed database. accessed by any copies of the teleporter
 script you use if you host multi/realm multi/build or single realm/build.
-You can add new Menu's and entries plus limit there access to : Team, Level, Build, RealmID
+You can add new Menu's and entries. plus, limit there access by : Team, Level, Build, RealmID
  allowing the script to filter out any menus or entries that may not exsist in lower
  builds or may be team specific, or one or more of your realms has custom imported maps.
 */
