@@ -24,8 +24,8 @@ no more script core edditing to add new menus and/or locations with gps's.
 
 just add a new menu, or custom location data to an exsisting Menu in the DB and go !!
 
-[*] Menus can be parsed for Team, Level, Expansion, RealmID.
-[*] Entries can be parsed for Team, Level, Expansion.
+* Menus can be parsed for Team, Level, Expansion, RealmID.
+* Entries can be parsed for Team, Level, Expansion.
 
 # WHAT !!???!!
 
