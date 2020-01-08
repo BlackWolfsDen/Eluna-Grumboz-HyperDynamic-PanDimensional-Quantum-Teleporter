@@ -12,20 +12,17 @@
 -- Emulator Support Info :
 -- EMU : Mangos
 -- Type : Eluna script
--- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595)
--- Map/GPS expansion Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
-
--- tele points are all from Rochet2's sql teleporter. yes 1 at a time I added them manually.
--- parses for : team, level, GM, and expansion.
+-- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595) will auto adapt to future builds.
+-- included Map/GPS expansion Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
+--
+-- Credits :
+-- ALL tele points are from Rochet2's sql teleporter.
 
 print();
 print("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 print("+                           +");
 
 local expansion = (GetCoreName()..GetCoreExpansion());
-
-print("+          "..expansion.."          +");
-print("+                           +");
 
 -- Table BluePrint --
 --
