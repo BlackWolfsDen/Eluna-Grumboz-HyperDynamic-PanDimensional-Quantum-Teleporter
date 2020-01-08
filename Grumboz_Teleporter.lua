@@ -5,6 +5,7 @@
 -- Finish Date : 01/04/2020
 -- Dev point : Scripting Complete
 -- Release Stage : open Beta testing - READY
+-- Version : V 2.0
 --
 -- look out Mangos .., Grumbo'z Coming ! RUN !!!
 --
@@ -22,6 +23,9 @@ print("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 print("+                           +");
 
 local expansion = (GetCoreName()..GetCoreExpansion());
+
+print("+          "..expansion.."          +");
+print("+                           +");
 
 -- Table BluePrint --
 --
@@ -60,12 +64,14 @@ local itemid = 40582
 local intoffset = 10000;
 local Allowed_Entries = 12;
 local CORE_EXPANSION = GetCoreExpansion();
+local REALM_ID = GetRealmID();
 local DATABASE = "grumboz_quantum_teleporter";
 local ENTRY_KEY = 7;
 
 -- Define Menu Entry Colors --
 local FRIENDLY = "|cff004D0D";
 local HOSTILE = "|cffAF002A";
+local NEUTRAL = "|cff004D0D";
 local GAMEMASTER = "|cff404040";
 local COLOR_END = "|r";
 
@@ -102,7 +108,7 @@ local a = 0;
 			
 			local entry_menu_id = entry:GetUInt8(0);
 			
-				TeleportEntry[menu_id][a] = {entry:GetString(1),entry:GetUInt8(2),entry:GetUInt8(3),entry:GetUInt32(4),entry:GetUInt32(5),entry:GetFloat(6),entry:GetFloat(7),entry:GetFloat(8),entry:GetFloat(9),entry:GetUInt8(10),entry:GetUInt8(11)};
+				TeleportEntry[menu_id][a] = { entry:GetString(1),entry:GetUInt8(2),entry:GetUInt8(3),entry:GetUInt32(4),entry:GetUInt32(5),entry:GetFloat(6),entry:GetFloat(7),entry:GetFloat(8),entry:GetFloat(9),entry:GetUInt8(10),entry:GetUInt8(11) };
 
 		until not entry:NextRow();
 	end -- if entry loop
@@ -121,7 +127,7 @@ local menu = WorldDBQuery("SELECT * FROM "..DATABASE..".menus;");
 			
 			local menu_id = menu:GetUInt8(0);
 
-			TeleportMenu[menu_id] = { menu:GetString(1), menu:GetUInt8(2), menu:GetUInt8(3), menu:GetUInt8(4), menu:GetUInt8(5), menu:GetUInt8(6) };
+			TeleportMenu[menu_id] = { menu:GetString(1), menu:GetUInt8(2), menu:GetUInt8(3), menu:GetUInt8(4), menu:GetUInt8(5), menu:GetUInt8(6), menu:GetUInt8(7), menu:GetUInt8(8) };
 			
 			LoadEntries(menu_id);
 			
@@ -135,11 +141,11 @@ BuildTable();
 local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 
 --______________________--
---------------------------
+-----G-------------s------
 -- Teleporter Main Menu --
 --                      --
 -- Menu Table BluePrint : TeleportMenu[Menu_Id]{"Menu Title", icon, team, level, expansion_low, expansion_high}
---------------------------
+--l------------------R----
 
 	if (player:IsInCombat()~=true)then	-- Show main menu
 
@@ -151,33 +157,37 @@ local function TeleportStoneOnHello(event, player, unit, sender, intid, code)
 
 			for i = i+1, sSize do
 				
-				local name, icon, team, level, expansion_low, expansion_high, _ = table.unpack(TeleportMenu[i]);
+				local name, icon, team, level, expansion_low, expansion_high, realm_low, realm_high = table.unpack(TeleportMenu[i]);
 
 					if((CORE_EXPANSION >= expansion_low) and (CORE_EXPANSION <= expansion_high))then
 					
-					if(team == 2)or(team == pTeam)or(player:IsGM() == true)then
-					
-						if(pLevel >= level)then
+						if((REALM_ID >= realm_low) and (REALM_ID <= realm_high))then
 						
-							local color;
-	
-								if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
-								if(team == pTeam)then color = FRIENDLY;end
-								if(team == 3)then color = GAMEMASTER;end
-	
-							player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1);
-			    			
-			    			entry = entry+1;
-			    		
-			    		end -- Level Check
-					end -- team check
+						if(team == 2)or(team == pTeam)or(player:IsGM() == true)then
+						
+							if(pLevel >= level)then
+							
+								local color;
 		
-			   		if(entry == Allowed_Entries)then
+									if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
+									if(team == pTeam)then color = FRIENDLY;end
+									if(team == 3)then color = NEUTRAL;end
+									if(team == 4)then color = GAMEMASTER;end
 		
-						player:GossipMenuAddItem(7, "|cff00308Fnext..|r", 0, i+1)
-		
-						break;
-			   		end
+								player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1);
+				    			
+				    			entry = entry+1;
+				    		
+				    		end -- Level Check
+						end -- team check
+			
+				   		if(entry == Allowed_Entries)then
+			
+							player:GossipMenuAddItem(7, "|cff00308Fnext..|r", 0, i+1)
+			
+							break;
+				   		end
+				   	end -- Realm Check
 		   		end -- Expansion check
 			end -- if/do loop
 		
@@ -191,11 +201,11 @@ end
 local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code)
 
 --_______________________________--
------------------------------------
+-----p-----U-----------------1-----
 -- Teleporter Main Menu extended --
 --                               --
 -- Menu Table BluePrint : TeleportEntry[Menu_id][Entry_Id]{"Menu Title", icon, team, expansion low, expansion high, {location table}}
------------------------------------
+------3---------------M------------
 
 	if (sender == 0) then -- Continue Menu
 
@@ -224,7 +234,8 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 		
 									if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
 									if(team == pTeam)then color = FRIENDLY;end
-									if(team == 3)then color = GAMEMASTER;end
+									if(team == 3)then color = NEUTRAL;end
+									if(team == 4)then color = GAMEMASTER;end
 		
 									player:GossipMenuAddItem(icon, color..name..COLOR_END, i, 1);
 						    			
@@ -251,9 +262,9 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 	end
 
 
----------------------
+--B-------a----------
 -- Teleport Player --
----------------------
+---t----------4------
 
 	if (intid > (intoffset))then
 
@@ -273,11 +284,11 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 	end
 
 --____________________________--
---------------------------------
+---------------------------2----
 -- teleport location sub menu --
 
 --  Location Table blueprint = {"location name", icon, team, minimum level, map, x, y, z, o, expansion minimum},}
---------------------------------
+-------0----------------O-------
 
 
 	if (sender >= 1)then-- Show teleport sub-menu
@@ -306,7 +317,8 @@ local function TeleporterOnGossipSelect(event, player, unit, sender, intid, code
 								
 									if((team == 2) or (team ~= pTeam))then color = HOSTILE;end
 									if(team == pTeam)then color = FRIENDLY;end
-									if(team == 3)then color = GAMEMASTER;end
+									if(team == 3)then color = NEUTRAL;end
+									if(team == 4)then color = GAMEMASTER;end
 									
 								player:GossipMenuAddItem(icon, color..name..COLOR_END, sender, (a+intoffset))
 									
