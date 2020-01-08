@@ -14,7 +14,6 @@ DROP DATABASE IF EXISTS `grumboz_quantum_teleporter`;
 CREATE DATABASE IF NOT EXISTS `grumboz_quantum_teleporter` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `grumboz_quantum_teleporter`;
 
-DROP TABLE IF EXISTS `entries`;
 DROP TABLE IF EXISTS `menus`;
 CREATE TABLE IF NOT EXISTS `menus` (
   `menu_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT COMMENT 'This id is used to link a menu to its entries.',
@@ -48,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
 	(16, 'WoD Custom Maps', 10, 2, 1, 1, 1, 7, 7),
 	(17, 'Locations 3', 10, 2, 1, 0, 4, 1, 255);
 
+DROP TABLE IF EXISTS `entries`;
 CREATE TABLE IF NOT EXISTS `entries` (
   `menu_id` tinyint(4) NOT NULL COMMENT 'Menu_Id from menus table this entry will belong to.',
   `entry_title` varchar(255) NOT NULL DEFAULT 'ENTRY_TITLE' COMMENT 'tele location name.',
