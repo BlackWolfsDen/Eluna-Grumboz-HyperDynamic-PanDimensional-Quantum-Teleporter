@@ -11,7 +11,7 @@
 --
 -- Emulator Support Info :
 -- EMU : Mangos
--- Type : Eluna script
+-- Language : Eluna script
 -- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595) will auto adapt to future builds.
 -- included Map/GPS expansion Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
 --
