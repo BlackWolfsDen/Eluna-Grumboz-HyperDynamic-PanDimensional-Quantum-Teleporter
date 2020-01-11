@@ -1,3 +1,8 @@
+This teleporter requires a custom method for Eluna.
+I sent a pull request to make it a perm method for future.
+But until then it will need to be added manually to your core Eluna Module.
+
+
 Eluna/GlobalMethods.h  -  around line 80
 
   #if defined(MANGOS) || (CMANGOS)
