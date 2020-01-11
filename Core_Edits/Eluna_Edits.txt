@@ -1,0 +1,22 @@
+Eluna/GlobalMethods.h  -  around line 80
+
+  #if defined(MANGOS) || (CMANGOS)
+      /**
+       * Returns emulator mangosd.conf RealmID
+       *
+       * - For cMaNGOS returns the realmID as it is in the conf file.
+       * - for MaNGOS returns the realmID as it is in the conf file.
+       *
+       * @return string version
+       */
+      int GetRealmID(lua_State* L)
+      {
+          Eluna::Push(L, eWorld->GetRealmID());
+          return 1;
+      }
+  #endif
+
+
+Eluna/LuaFunctions.cpp  -  around line 78
+
+    { "GetRealmID", &LuaGlobalFunctions::GetRealmID },
