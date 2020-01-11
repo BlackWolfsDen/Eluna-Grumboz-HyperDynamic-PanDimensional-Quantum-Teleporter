@@ -11,7 +11,7 @@ Eluna/GlobalMethods.h  -  around line 80
        *
        * - For cMaNGOS returns the realmID as it is in the conf file.
        * - for MaNGOS returns the realmID as it is in the conf file.
-       *
+       * - Grumbo Was HERE !!
        * @return string version
        */
       int GetRealmID(lua_State* L)
