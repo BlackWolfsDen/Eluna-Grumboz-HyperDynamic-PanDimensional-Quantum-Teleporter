@@ -1,0 +1,1 @@
+    { "GetRealmID", &LuaGlobalFunctions::GetRealmID },
