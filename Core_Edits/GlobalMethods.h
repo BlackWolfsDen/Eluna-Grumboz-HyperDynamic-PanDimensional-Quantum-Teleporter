@@ -5,7 +5,7 @@
        * - For cMaNGOS returns the realmID as it is in the conf file.
        * - for MaNGOS returns the realmID as it is in the conf file.
        * - Grumbo Was HERE !!
-       * @return string version
+       * @return Realm Uint ID
        */
       int GetRealmID(lua_State* L)
       {
