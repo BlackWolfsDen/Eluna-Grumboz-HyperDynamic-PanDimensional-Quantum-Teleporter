@@ -13,12 +13,12 @@ Includes :
   * sql DB file.
   * sql for in-game tele stone.
   * main lua file.
+  * Mangos Eluna required custom method.
 
 Includes tele menu/entries for DoW, TBC, WotLK, Cata
 
 
-Designed the way a free2public teleporter should be.  ... adaptive to diversity
-from server to server and expansion to expansion with an easy to expand menu/entry table that the core will automatically adapt to.
+Designed the way a free2public teleporter should be.  ... adaptive to diversity from server to server and expansion to expansion with an easy to expand menu/entry table that the core will automatically adapt to.
 no more script core edditing to add new menus and/or locations with gps's.
 
 
@@ -29,7 +29,7 @@ just add a new menu, or custom location data to an exsisting Menu in the DB and 
 
 # WHAT !!???!!
 
-# !!???! 1 teleporter for DoW, TBC, WotLK AND Cata !???!!
+# !!???! 1 teleporter for DoW, TBC, WotLK, Cata, MoP AND WoD !???!!
 
 
 # Public Beta Testing - Ready
