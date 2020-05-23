@@ -1,4 +1,4 @@
-# [Mangos]{TrinityCore}[Eluna] Grumboz Hyper-Dynamic Pan-Dimensional Quantum Teleporter V2.0
+# [Mangos][TrinityCore][Eluna] Grumboz Hyper-Dynamic Pan-Dimensional Quantum Teleporter V2.0
 An Eluna teleporter script for Mangos
 designed to support single or multiple world servers while just using 1 DB.
 
