@@ -10,8 +10,8 @@
 -- look out Mangos .., Grumbo'z Coming ! RUN !!!
 --
 -- Emulator Support Info :
--- EMU : Mangos
--- Language : Eluna script
+-- EMU : Mangos/TrinityCore
+-- Language : Eluna script .lua
 -- Build : auto-adaptive <= 15595 (5875, 8606, 12340, 15595) will auto adapt to future builds.
 -- included Map/GPS expansion Support : <= 4.3.4 {DoW, TBC, WotLK, Cata}
 --
@@ -61,7 +61,7 @@ local itemid = 40582
 local intoffset = 10000;
 local Allowed_Entries = 12;
 local CORE_EXPANSION = GetCoreExpansion();
-local REALM_ID = GetRealmID();
+local REALM_ID = GetRealmID(); -- this requires the custom Eluna method added.
 local DATABASE = "grumboz_quantum_teleporter";
 local ENTRY_KEY = 7;
 
