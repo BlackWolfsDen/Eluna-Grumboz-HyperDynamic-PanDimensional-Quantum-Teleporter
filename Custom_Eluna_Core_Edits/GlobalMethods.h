@@ -1,7 +1,6 @@
       /**
        * Returns emulator .conf RealmID
        *
-       * - For cMaNGOS returns the realmID as it is in the conf file.
        * - for MaNGOS returns the realmID as it is in the conf file.
        * - for TrinityCore returns the realmID as it is in the conf file.
        * - Grumbo Was HERE !!
@@ -18,7 +17,7 @@
   #if defined(TRINITY)
       int GetRealmID(lua_State* L)
       {
-          Eluna::Push(L, rbac::RBACData::_realmId);
+					Eluna::Push(L, sConfigMgr->GetIntDefault("RealmID", 1));
           return 1;
       }
 	#endif
