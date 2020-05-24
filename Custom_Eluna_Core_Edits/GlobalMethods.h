@@ -17,7 +17,7 @@
   #if defined(TRINITY)
       int GetRealmID(lua_State* L)
       {
-					Eluna::Push(L, sConfigMgr->GetIntDefault("RealmID", 1));
-          return 1;
+						Eluna::Push(L, sConfigMgr->GetIntDefault("RealmID", 1));
+						return 1;
       }
 	#endif
