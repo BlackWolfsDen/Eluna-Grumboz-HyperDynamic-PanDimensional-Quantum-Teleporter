@@ -1,5 +1,5 @@
 -- Creator Info :
--- by slp13at420
+-- Grumbo aKa slp13at420 of EmuDevs.com , Running Fox Games
 -- Designed For Mangos Eluna
 -- Start Date : 01/01/2020
 -- Finish Date : 01/04/2020
